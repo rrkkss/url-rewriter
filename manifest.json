@@ -2,7 +2,6 @@
     "manifest_version": 2,
     "name": "url-rewriter",
     "version": "1.0",
-    "default_locale": "en",
     "description": "Rewrites URLs per rules",
 
     "browser_action":
@@ -10,21 +9,24 @@
         "default_popup": "index.html",
         "browser_style": true
     },
-  
-    "user_scripts": 
-    {
-        "api_script": "js/script.js"
-    },
 
     "content_scripts":
     [
         {
             "matches": [
-                "https://*",
-                "http://*"
+                "<all_urls>"
+            ],
+            "js": [
+                "js/script.js"
             ]
         }
     ],
+
+    "background": {
+        "scripts": [
+            "load_defaults.js"
+        ]
+    },
 
     "permissions": 
     [
